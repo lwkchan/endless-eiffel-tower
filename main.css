@@ -2,3 +2,11 @@
   margin: 0 auto;
   max-width: 400px;
 }
+#tower {
+  margin: 0 auto;
+  max-width: 400px;
+  height: 110vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
