@@ -1,12 +1,31 @@
 ;(function(document, window) {
-  let scrollPosition = 0
   let ticking = false
-  let towerTop = document
+  const towerTop = document
     .getElementById('tower-art')
     .innerHTML.split('')
     .slice(0, 92)
     .join('')
-  let floor = '           [|]'
+  const floor = '           [|]'
+
+  window.addEventListener('scroll', function(e) {
+    if (!ticking && window.scrollY === 0) {
+      window.requestAnimationFrame(function() {
+        build()
+        scrollDownPartway()
+        ticking = false
+      })
+
+      ticking = true
+    }
+  })
+
+  function scrollToBottom() {
+    window.scrollTo(0, document.body.scrollHeight)
+  }
+
+  function scrollDownPartway() {
+    window.scrollTo(0, window.innerHeight - 800)
+  }
 
   function build() {
     const towerEl = document.getElementById('tower-art')
@@ -18,21 +37,5 @@
     towerEl.innerHTML = tallerTower
   }
 
-  window.addEventListener('scroll', function(e) {
-    scrollPosition = window.scrollY
-
-    if (!ticking && scrollPosition === 0) {
-      window.requestAnimationFrame(function() {
-        build()
-        window.scrollTo(0, window.innerHeight - 800)
-        ticking = false
-      })
-
-      ticking = true
-    }
-  })
-  let scrollToBottom = function() {
-    window.scrollTo(0, document.body.scrollHeight)
-  }
   window.onload = scrollToBottom
 })(document, window)
