@@ -6,12 +6,8 @@ body {
   height: 100%;
 }
 
-#tower-sky {
-  height: 20%;
-}
 #tower {
   margin: 0 auto;
   width: 100%;
-  height: 100%;
   overflow: scroll;
 }
