@@ -10,13 +10,9 @@
   const floor = '           [|]'
 
   window.addEventListener('scroll', function(e) {
-    console.log('scrolling')
     if (!ticking && window.scrollY === 0) {
-      console.log('abbout to do it')
       window.requestAnimationFrame(function() {
-        console.log('building')
         build()
-        console.log('scrolling down part way')
         scrollDownPartway()
         ticking = false
       })
