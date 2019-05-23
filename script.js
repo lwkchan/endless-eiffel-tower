@@ -1,5 +1,7 @@
 ;(function(document, window) {
+  const towerEl = document.getElementById('tower-art')
   let ticking = false
+
   const towerTop = document
     .getElementById('tower-art')
     .innerHTML.split('')
@@ -8,9 +10,13 @@
   const floor = '           [|]'
 
   window.addEventListener('scroll', function(e) {
+    console.log('scrolling')
     if (!ticking && window.scrollY === 0) {
+      console.log('abbout to do it')
       window.requestAnimationFrame(function() {
+        console.log('building')
         build()
+        console.log('scrolling down part way')
         scrollDownPartway()
         ticking = false
       })
@@ -24,11 +30,10 @@
   }
 
   function scrollDownPartway() {
-    window.scrollTo(0, window.innerHeight - 800)
+    window.scrollTo(0, towerEl.clientHeight * 0.05)
   }
 
   function build() {
-    const towerEl = document.getElementById('tower-art')
     const towerBase = towerEl.innerHTML
       .split('')
       .slice(91)
